@@ -22,17 +22,18 @@ const paths = {
 }
 
 const { src, watch, dest, series, parallel } = require('gulp')
-const concat        = require('gulp-concat')
-const browserSync   = require('browser-sync').create()
-const uglify        = require('gulp-uglify-es').default
-const sass          = require('gulp-sass')
-const groupMediaCSS = require('gulp-group-css-media-queries')
-const autoprefixer  = require('gulp-autoprefixer')
-const cleanCSS      = require('gulp-clean-css')
-const newer         = require('gulp-newer')
-const webp          = require('gulp-webp')
-const imagemin      = require('gulp-imagemin')
-const del           = require('del')
+const concat          = require('gulp-concat')
+const browserSync     = require('browser-sync').create()
+const uglify          = require('gulp-uglify-es').default
+const sass            = require('gulp-sass')
+const groupMediaCSS   = require('gulp-group-css-media-queries')
+const autoprefixer    = require('gulp-autoprefixer')
+const cleanCSS        = require('gulp-clean-css')
+const newer           = require('gulp-newer')
+const webp            = require('gulp-webp')
+const imagemin        = require('gulp-imagemin')
+const del             = require('del')
+const nunjucksRender  = require('gulp-nunjucks-render')
 
 function browsersync() {
   browserSync.init({
@@ -84,11 +85,18 @@ function startwatch(){
   watch(`${paths.images.src}/**/*.{${imagesWatch}}`, images);
 }
 
+function render() {
+  return src(`${srcDir}/view/pages/*.html`)
+  .pipe(nunjucksRender())
+  .pipe(dest(`${srcDir}/`))
+}
+
 exports.scripts = scripts
 exports.browsersync = browsersync
 exports.styles = styles
 exports.images = images
 exports.cleanimg = cleanimg
+exports.render = render
 
 exports.build = series(cleanimg, scripts, styles, images)
 exports.default = parallel(scripts, styles, images, browsersync,startwatch)
