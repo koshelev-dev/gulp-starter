@@ -1,4 +1,5 @@
 const srcDir = 'source'
+const staticDir = 'static'
 const imagesWatch  = 'jpg,jpeg,png' // List of images extensions for watching & compression (comma separated)
 const filesWatch   = 'html,json,md,woff2' // List of files extensions for watching & hard reload (comma separated)
 
@@ -77,6 +78,9 @@ function images() {
 function cleanimg() {
   return del([`${paths.images.dest}/**/*`, `!${paths.images.src}`, `!${paths.images.dest}/favicons`], { force: true })
 }
+function cleanstatic() {
+  return del(`${staticDir}`, { force: true })
+}
 
 function startwatch(){
   watch(`${srcDir}/**/*.{${filesWatch}}`).on('change', browserSync.reload);
@@ -94,12 +98,20 @@ function render() {
   .pipe(dest(`${srcDir}/`))
 }
 
+function buildhtml() {return src(`${srcDir}/*.html`).pipe(dest(`${staticDir}`))}
+function buildcss() {return src(`${srcDir}/css/style.min.css`).pipe(dest(`${staticDir}/css`))}
+function buildjs() {return src(`${srcDir}/js/scripts.min.js`).pipe(dest(`${staticDir}/js`))}
+function buildfonts() {return src(`${srcDir}/fonts/**/*.*`).pipe(dest(`${staticDir}/fonts`))}
+function buildimg() {return src([`${srcDir}/images/**/*.*`, `!${paths.images.src}`]).pipe(dest(`${staticDir}/images`))}
+
 exports.scripts = scripts
 exports.browsersync = browsersync
 exports.styles = styles
 exports.images = images
 exports.cleanimg = cleanimg
 exports.render = render
+exports.cleanstatic = cleanstatic
 
+exports.generate = series(buildhtml, buildcss, buildjs, buildimg, buildfonts)
 exports.build = series(cleanimg, scripts, styles, images)
 exports.default = parallel(scripts, styles, images, browsersync,startwatch)
