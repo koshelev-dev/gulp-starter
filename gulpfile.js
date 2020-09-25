@@ -83,11 +83,14 @@ function startwatch(){
   watch([`${srcDir}/js/*.js`, `!${paths.scripts.dest}/*.min.js`], scripts);
   watch(`${srcDir}/scss/**/*`, styles);
   watch(`${paths.images.src}/**/*.{${imagesWatch}}`, images);
+  watch(`${srcDir}/view/**/*.html`, render)
 }
 
 function render() {
   return src(`${srcDir}/view/pages/*.html`)
-  .pipe(nunjucksRender())
+  .pipe(nunjucksRender({
+    path: `${srcDir}/view`
+  }))
   .pipe(dest(`${srcDir}/`))
 }
 
