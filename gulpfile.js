@@ -75,7 +75,7 @@ function images() {
 }
 
 function cleanimg() {
-  return del([`${paths.images.dest}/**/*`, `!${paths.images.src}`], { force: true })
+  return del([`${paths.images.dest}/**/*`, `!${paths.images.src}`, `!${paths.images.dest}/favicons`], { force: true })
 }
 
 function startwatch(){
