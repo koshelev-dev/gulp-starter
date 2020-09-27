@@ -7,5 +7,5 @@ To build static files:
 
 To clear folder static:
 
-    gulp cleanstatic
+    gulp clean
     

@@ -110,7 +110,7 @@ exports.styles = styles
 exports.images = images
 exports.cleanimg = cleanimg
 exports.render = render
-exports.cleanstatic = cleanstatic
+exports.clean = cleanstatic
 
 exports.generate = series(buildhtml, buildcss, buildjs, buildimg, buildfonts)
 exports.build = series(cleanimg, scripts, styles, images)
