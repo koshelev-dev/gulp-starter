@@ -1,3 +1,13 @@
 node_modules
 .idea
+
+# Folder of static
 static
+
+# Folder and files for development
+source/css
+source/js/scripts.min.js
+source/*.html
+source/images
+!source/images/src
+!source/images/favicons
