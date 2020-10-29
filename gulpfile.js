@@ -1,6 +1,6 @@
 const srcDir = 'source'
 const staticDir = 'static'
-const imagesWatch  = 'jpg,jpeg,png' // List of images extensions for watching & compression (comma separated)
+const imagesWatch  = 'jpg,jpeg,png,svg' // List of images extensions for watching & compression (comma separated)
 const filesWatch   = 'html,json,md,woff2' // List of files extensions for watching & hard reload (comma separated)
 
 const paths = {
