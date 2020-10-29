@@ -112,6 +112,6 @@ exports.cleanimg = cleanimg
 exports.render = render
 exports.clean = cleanstatic
 
-exports.generate = series(buildhtml, buildcss, buildjs, buildimg, buildfonts)
-exports.build = series(cleanimg, scripts, styles, images)
+exports.generate = series(render, parallel(buildhtml, buildcss, buildjs, buildimg, buildfonts))
+exports.build = series(cleanimg, parallel(scripts, styles, images))
 exports.default = parallel(scripts, styles, images, browsersync,startwatch)
