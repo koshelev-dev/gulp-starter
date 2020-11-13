@@ -91,7 +91,7 @@ function startwatch(){
 }
 
 function render() {
-  return src(`${srcDir}/view/pages/*.html`)
+  return src(`${srcDir}/view/pages/**/*.html`)
   .pipe(nunjucksRender({
     path: `${srcDir}/view`
   }))
@@ -114,4 +114,4 @@ exports.clean = cleanstatic
 
 exports.generate = series(render, parallel(buildhtml, buildcss, buildjs, buildimg, buildfonts))
 exports.build = series(cleanimg, parallel(scripts, styles, images))
-exports.default = parallel(scripts, styles, images, browsersync,startwatch)
+exports.default = parallel(render, scripts, styles, images, browsersync,startwatch)
