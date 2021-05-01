@@ -1,4 +1,4 @@
-const srcDir = 'source'
+const srcDir = 'source';
 const staticDir = 'static'
 const imagesWatch = 'jpg,jpeg,png,svg'
 const filesWatch = 'html,json,md,woff2'
