@@ -28,6 +28,8 @@
     "gulp-sass": "^4.1.0",
     "gulp-uglify-es": "^2.0.0",
     "gulp-webp": "^4.0.1",
+    "husky": "^6.0.0",
+    "lint-staged": "^10.5.4",
     "node-sass": "^4.14.1"
   },
   "scripts": {
@@ -35,7 +37,8 @@
     "build:dev": "gulp build",
     "build:prod": "gulp build --prod",
     "generate": "gulp generate",
-    "editorconfig": "editorconfig-checker"
+    "editorconfig": "editorconfig-checker",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -46,5 +49,8 @@
   "bugs": {
     "url": "https://github.com/koshelev-dev/gulp-starter/issues"
   },
-  "homepage": "https://github.com/koshelev-dev/gulp-starter#readme"
+  "homepage": "https://github.com/koshelev-dev/gulp-starter#readme",
+  "lint-staged": {
+    "*.js": "eslint --cache --fix"
+  }
 }
