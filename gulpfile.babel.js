@@ -1,3 +1,15 @@
+import config from './gulp/config';
+
+config.setEnv();
+
+export const build = () => {
+  console.log(config.isProd);
+};
+
+export const watch = () => {
+  console.log(config.isProd);
+};
+
 const srcDir = 'source';
 const staticDir = 'static';
 const imagesWatch = 'jpg,jpeg,png,svg';
@@ -21,9 +33,7 @@ const paths = {
   },
 };
 
-exports.test = () => {
-  console.log(1);
-};
+
 
 const {
   src,
@@ -66,18 +76,22 @@ function styles() {
   return src(paths.styles.src)
     .pipe(sass())
     .pipe(groupMediaCSS())
-    .pipe(autoprefixer({
-      overrideBrowserslist: ['last 5 versions'],
-      grid: true,
-    }))
+    .pipe(
+      autoprefixer({
+        overrideBrowserslist: ['last 5 versions'],
+        grid: true,
+      }),
+    )
     .pipe(concat('style.min.css'))
-    .pipe(cleanCSS({
-      level: {
-        1: {
-          specialComments: 0,
+    .pipe(
+      cleanCSS({
+        level: {
+          1: {
+            specialComments: 0,
+          },
         },
-      },
-    }))
+      }),
+    )
     .pipe(dest(paths.styles.dest))
     .pipe(browserSync.stream());
 }
@@ -85,28 +99,38 @@ function styles() {
 function images() {
   return src(`${paths.images.src}/**/*`)
     .pipe(newer(paths.images.dest))
-    .pipe(webp({
-      quality: 70,
-    }))
+    .pipe(
+      webp({
+        quality: 70,
+      }),
+    )
     .pipe(dest(paths.images.dest))
     .pipe(src(`${paths.images.src}/**/*`))
     .pipe(newer(paths.images.dest))
-    .pipe(imagemin({
-      progressive: true,
-      svgPlugins: [{
-        removeViewBox: false,
-      }],
-      interlaced: true,
-      optimizationLevel: 3,
-    }))
+    .pipe(
+      imagemin({
+        progressive: true,
+        svgPlugins: [{
+          removeViewBox: false,
+        }],
+        interlaced: true,
+        optimizationLevel: 3,
+      }),
+    )
     .pipe(dest(paths.images.dest))
     .pipe(browserSync.stream());
 }
 
 function cleanimg() {
-  return del([`${paths.images.dest}/**/*`, `!${paths.images.src}`, `!${paths.images.dest}/favicons`], {
-    force: true,
-  });
+  return del(
+    [
+      `${paths.images.dest}/**/*`,
+      `!${paths.images.src}`,
+      `!${paths.images.dest}/favicons`,
+    ], {
+      force: true,
+    },
+  );
 }
 
 function cleanstatic() {
@@ -117,9 +141,11 @@ function cleanstatic() {
 
 function render() {
   return src(`${srcDir}/view/pages/**/*.html`)
-    .pipe(nunjucksRender({
-      path: `${srcDir}/view`,
-    }))
+    .pipe(
+      nunjucksRender({
+        path: `${srcDir}/view`,
+      }),
+    )
     .pipe(dest(`${srcDir}/`));
 }
 
@@ -148,7 +174,9 @@ function buildfonts() {
 }
 
 function buildimg() {
-  return src([`${srcDir}/images/**/*.*`, `!${paths.images.src}`]).pipe(dest(`${staticDir}/images`));
+  return src([`${srcDir}/images/**/*.*`, `!${paths.images.src}`]).pipe(
+    dest(`${staticDir}/images`),
+  );
 }
 
 exports.scripts = scripts;
@@ -159,6 +187,16 @@ exports.cleanimg = cleanimg;
 exports.render = render;
 exports.clean = cleanstatic;
 
-exports.generate = series(render, parallel(buildhtml, buildcss, buildjs, buildimg, buildfonts));
-exports.build = series(cleanimg, parallel(scripts, styles, images));
-exports.default = parallel(render, scripts, styles, images, browsersync, startwatch);
+exports.generate = series(
+  render,
+  parallel(buildhtml, buildcss, buildjs, buildimg, buildfonts),
+);
+// exports.build = series(cleanimg, parallel(scripts, styles, images));
+exports.default = parallel(
+  render,
+  scripts,
+  styles,
+  images,
+  browsersync,
+  startwatch,
+);

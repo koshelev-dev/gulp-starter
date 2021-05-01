@@ -31,8 +31,9 @@
     "node-sass": "^4.14.1"
   },
   "scripts": {
-    "start": "gulp",
-    "build": "gulp build",
+    "dev": "gulp watch",
+    "build:dev": "gulp build",
+    "build:prod": "gulp build --prod",
     "generate": "gulp generate",
     "editorconfig": "editorconfig-checker"
   },
