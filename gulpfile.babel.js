@@ -2,14 +2,6 @@ import config from './gulp/config';
 
 config.setEnv();
 
-export const build = () => {
-  console.log(config.isProd);
-};
-
-export const watch = () => {
-  console.log(config.isProd);
-};
-
 const srcDir = 'source';
 const staticDir = 'static';
 const imagesWatch = 'jpg,jpeg,png,svg';
@@ -32,8 +24,6 @@ const paths = {
     dest: `${srcDir}/images`,
   },
 };
-
-
 
 const {
   src,
@@ -191,7 +181,7 @@ exports.generate = series(
   render,
   parallel(buildhtml, buildcss, buildjs, buildimg, buildfonts),
 );
-// exports.build = series(cleanimg, parallel(scripts, styles, images));
+exports.build = series(cleanimg, parallel(scripts, styles, images));
 exports.default = parallel(
   render,
   scripts,
