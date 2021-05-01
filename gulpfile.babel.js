@@ -21,6 +21,10 @@ const paths = {
     },
 }
 
+exports.test = () => {
+    console.log(1);
+}
+
 const {
     src,
     watch,
