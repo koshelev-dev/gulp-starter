@@ -3,7 +3,8 @@ import config from './gulp/config';
 import clean from './gulp/tasks/clean';
 import server from './gulp/tasks/server';
 import { scriptBuild, scriptWatch } from './gulp/tasks/scripts';
-import { htmlBuilds, htmlWatch } from './gulp/tasks/html';
+import { htmlBuild, htmlWatch } from './gulp/tasks/html';
+import { styleBuild, styleWatch } from './gulp/tasks/styles';
 
 config.setEnv();
 
@@ -11,7 +12,8 @@ export const build = gulp.series(
   clean,
   gulp.parallel(
     scriptBuild,
-    htmlBuilds,
+    htmlBuild,
+    styleBuild,
   ),
 );
 
@@ -21,5 +23,6 @@ export const watch = gulp.series(
   gulp.parallel(
     scriptWatch,
     htmlWatch,
+    styleWatch,
   ),
 );
