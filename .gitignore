@@ -1,13 +1,26 @@
+# Dependency directory
 node_modules
+
+### OSX ###
+.DS_Store
+.AppleDouble
+.LSOverride
+
+### Windows ###
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# eslint cache file
+.eslintcache
+
+### Code ###
+# Visual Studio Code - https://code.visualstudio.com/
+.settings/
+.vscode/
+
+# Idea
 .idea
 
-# Folder of static
-static
-
-# Folder and files for development
-source/css
-source/js/scripts.min.js
-source/*.html
-source/images/*
-!source/images/src
-!source/images/favicons
+# Build folder
+build
