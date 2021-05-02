@@ -4,6 +4,7 @@ const distPath = 'build';
 const config = {
   src: {
     root: srcPath,
+    view: `${srcPath}/view`,
     scss: `${srcPath}/scss`,
     js: `${srcPath}/js`,
     fonts: `${srcPath}/assets/fonts`,

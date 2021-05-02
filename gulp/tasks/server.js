@@ -18,6 +18,7 @@ const server = (callback) => {
       },
     ],
     notify: false,
+    open: false,
   });
 
   callback();

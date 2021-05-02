@@ -1,10 +1,8 @@
 {
-  "name": "gulp-starter",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "dependencies": {
-    "bootstrap": "^4.5.2"
+  "private": true,
+  "engines": {
+    "node": "14.x",
+    "npm": "6.x"
   },
   "scripts": {
     "dev": "gulp watch",
@@ -12,8 +10,8 @@
     "build:prod": "gulp build --prod",
     "generate": "gulp generate",
     "editorconfig": "editorconfig-checker",
-    "eslint": "eslint src/**/*.js",
-    "prepare": "husky install"
+    "html": "node-w3c-validator -i ./build/*.html",
+    "eslint": "eslint src/**/*.js"
   },
   "devDependencies": {
     "@babel/core": "^7.14.0",
@@ -30,33 +28,21 @@
     "eslint-plugin-import": "^2.22.1",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^7.0.1",
-    "gulp-clean-css": "^4.3.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-group-css-media-queries": "^1.2.2",
     "gulp-if": "^3.0.0",
-    "gulp-imagemin": "^7.1.0",
-    "gulp-newer": "^1.4.0",
-    "gulp-nunjucks-render": "^2.2.3",
-    "gulp-sass": "^4.1.0",
+    "gulp-nunjucks-templates": "^1.0.3",
     "gulp-sourcemaps": "^3.0.0",
     "gulp-uglify": "^3.0.2",
-    "gulp-webp": "^4.0.1",
     "husky": "^6.0.0",
     "lint-staged": "^10.5.4",
-    "node-sass": "^4.14.1",
+    "node-w3c-validator": "^2.0.1",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/koshelev-dev/gulp-starter.git"
-  },
-  "author": "Koshelev Nikita <koshelevn92@gmail.com>",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/koshelev-dev/gulp-starter/issues"
-  },
-  "homepage": "https://github.com/koshelev-dev/gulp-starter#readme",
+  "browserslist": [
+    "last 2 version",
+    "not dead",
+    "not ie <= 11"
+  ],
   "lint-staged": {
     "*.js": "eslint --cache --fix"
   }
