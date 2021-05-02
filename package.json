@@ -45,6 +45,6 @@
   ],
   "lint-staged": {
     "*.js": "eslint --cache --fix",
-    "*.njk": "npm run html"
+    "src/*.njk": "npm run html"
   }
 }
