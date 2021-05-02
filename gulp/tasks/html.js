@@ -11,3 +11,5 @@ export const htmlBuilds = () => (
 );
 
 export const htmlWatch = () => gulp.watch(`${config.src.view}/**/*.njk`, htmlBuilds);
+
+console.log(1);
