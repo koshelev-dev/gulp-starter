@@ -12,6 +12,7 @@
     "build:prod": "gulp build --prod",
     "generate": "gulp generate",
     "editorconfig": "editorconfig-checker",
+    "eslint": "eslint src/**/*.js",
     "prepare": "husky install"
   },
   "devDependencies": {
