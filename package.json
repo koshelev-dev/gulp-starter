@@ -19,7 +19,7 @@
     "@babel/eslint-parser": "^7.13.14",
     "@babel/preset-env": "^7.14.0",
     "@babel/register": "^7.13.16",
-    "browser-sync": "^2.26.12",
+    "browser-sync": "^2.26.14",
     "del": "^5.1.0",
     "editorconfig-checker": "^4.0.2",
     "eslint": "^7.25.0",
