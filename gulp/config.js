@@ -5,7 +5,7 @@ const config = {
   src: {
     root: srcPath,
     view: `${srcPath}/view`,
-    scss: `${srcPath}/scss`,
+    css: `${srcPath}/css`,
     js: `${srcPath}/js`,
     fonts: `${srcPath}/assets/fonts`,
     images: `${srcPath}/assets/images`,

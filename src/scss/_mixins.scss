@@ -1,8 +1,0 @@
-@mixin font-face($name, $full-name, $style, $weight, $file) {
-  @font-face {
-    font-weight: $weight;
-    font-family: quote($name);
-    font-style: $style;
-    src: local($name), local($full-name), url("../fonts/"+ $file + ".woff2") format("woff2"), url('../fonts/'+ $file + '.woff') format('woff');
-  }
-}
