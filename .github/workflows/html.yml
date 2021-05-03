@@ -22,6 +22,6 @@ jobs:
         with:
           java-version: ${{ matrix.java }}
           architecture: x64
-      - run: npm ci --force
+      - run: npm ci
       - run: npm run build:prod
       - run: npm run html
