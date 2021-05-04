@@ -13,7 +13,7 @@
     "editorconfig": "editorconfig-checker",
     "html": "node-w3c-validator -i ./build/*.html",
     "eslint": "eslint src/**/*.js",
-    "stylelint": "stylelint src/scss/**/*.scss",
+    "stylelint": "stylelint src/css/**/*.css",
     "test": "npm run editorconfig && npm run html && npm run eslint && npm run stylelint",
     "prepare": "husky install"
   },
