@@ -9,6 +9,7 @@ const config = {
     js: `${srcPath}/js`,
     fonts: `${srcPath}/assets/fonts`,
     images: `${srcPath}/assets/images`,
+    favicons: `${srcPath}/assets/favicons`,
     icons: `${srcPath}/assets/icons`,
   },
 
@@ -19,6 +20,7 @@ const config = {
     js: `${distPath}/js`,
     fonts: `${distPath}/fonts`,
     images: `${distPath}/images`,
+    favicons: `${distPath}/images/favicons`,
   },
 
   setEnv() {
