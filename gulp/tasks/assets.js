@@ -6,7 +6,12 @@ const fontsBuild = () => (
     .pipe(gulp.dest(config.dest.fonts))
 );
 
-export const assetsBuild = gulp.parallel(fontsBuild);
+const manifestBuild = () => (
+  gulp.src(`${config.src.root}/manifest.webmanifest`)
+    .pipe(gulp.dest(config.dest.root))
+);
+
+export const assetsBuild = gulp.parallel(fontsBuild, manifestBuild);
 
 export const assetsWatch = () => (
   gulp.watch(`${config.src.fonts}/**/*`, fontsBuild)
