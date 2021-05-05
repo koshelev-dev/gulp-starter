@@ -1,3 +1,5 @@
-import test from './test';
+import documentReady from './helpers/documentReady';
 
-test();
+documentReady(() => {
+  console.log('outdide');
+});
