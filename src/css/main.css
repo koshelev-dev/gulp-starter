@@ -1,5 +1,14 @@
-@import "global";
+/* Fonts */
 
-h1 {
-  font-size: 22px;
+@import "fonts";
+@import "body";
+
+/* Components */
+
+@import "components/visually-hidden";
+
+/* Globals */
+
+:root {
+  --color-text-link: blue;
 }
