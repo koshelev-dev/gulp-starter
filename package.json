@@ -66,6 +66,7 @@
     "*.scss": "stylelint"
   },
   "dependencies": {
-    "imagemin-webp": "^6.0.0"
+    "imagemin-webp": "^6.0.0",
+    "normalize.css": "^8.0.1"
   }
 }
